@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.util.function.Consumer;
+import java.util.regex.Pattern;
 
 public class Calculator {
     public static final int WINDOW_WIDTH = 410;
@@ -81,6 +82,46 @@ public class Calculator {
         inText.setFont(new Font("Comic Sans MS", Font.PLAIN, 33));
         window.add(inText);
 
+        //
+        btnC = initBtn("C", x[0], y[1], event -> {
+            repaintFont();
+            inText.setText("0");
+            opt = ' ';
+            val = 0;
+        });
+
+        btnBack = initBtn("<-", x[1], y[1], event -> {
+            repaintFont();
+            String str = inText.getText();
+            StringBuilder str2 = new StringBuilder();
+            for(int i = 0; i < str.length() - 1; i++) {
+                str2.append(str.charAt(i));
+            }
+            if(str2.toString().equals("")) {
+                inText.setText("0");
+            } else {
+                inText.setText(str2.toString());
+            }
+        });
+
+        btnMod = initBtn("%", x[2], y[1], event-> {
+            repaintFont();
+            if(Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText())) {
+                if (go) {
+                    val = calc(val, inText.getText(), opt);
+                    if (Pattern.matches("", String.valueOf(val))) {
+                        inText.setText(String.valueOf((int) val));
+                    } else {
+                        inText.setText(String.valueOf(val));
+                    }
+
+                    opt = '%';
+                    go = false;
+                    addWrite = false;
+                }
+            }
+        });
+
         window.setLayout(null);
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Close button clicked? = End The process
@@ -108,6 +149,28 @@ public class Calculator {
         window.add(btn);
 
         return btn;
+    }
+
+    public double calc(double x, String input, char opt) {
+        inText.setFont(inText.getFont().deriveFont(Font.PLAIN));
+        double y = Double.parseDouble(input);
+        switch (opt) {
+            case '+':
+                return x + y;
+            case '-':
+                return x - y;
+            case '*':
+                return x * y;
+            case '/':
+                return x / y;
+            case '%':
+                return x % y;
+            case '^':
+                return Math.pow(x, y);
+            default:
+                inText.setFont(inText.getFont().deriveFont(Font.PLAIN));
+                return y;
+        }
     }
 
     private void repaintFont() {
