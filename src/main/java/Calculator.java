@@ -374,7 +374,57 @@ public class Calculator {
         });
         btnEqual.setSize(2 * BUTTON_WIDTH + 10, BUTTON_HEIGHT);
 
-        
+        btnRoot = initBtn("√", x[4], y[1], event -> {
+            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText())) {
+                if (go) {
+                    val = Math.sqrt(Double.parseDouble(inText.getText()));
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        inText.setText(String.valueOf((int) val));
+                    } else {
+                        inText.setText(String.valueOf(val));
+                    }
+                    opt = '√';
+                    addWrite = false;
+                }
+            }
+        });
+
+        btnRoot.setVisible(false);
+
+        btnPower = initBtn("pow", x[4], y[2], event -> {
+            repaintFont();
+            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
+                if (go) {
+                    val = calc(val, inText.getText(), opt);
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        inText.setText(String.valueOf((int) val));
+                    } else {
+                        inText.setText(String.valueOf(val));
+                    }
+                    opt = '^';
+                    go = false;
+                    addWrite = false;
+                } else {
+                    opt = '^';
+                }
+        });
+        btnPower.setFont(new Font("Comic Sans MS", Font.PLAIN, 24));
+        btnPower.setVisible(false);
+
+        btnLog = initBtn("ln", x[4], y[3], event -> {
+            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
+                if (go) {
+                    val = Math.log(Double.parseDouble(inText.getText()));
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        inText.setText(String.valueOf((int) val));
+                    } else {
+                        inText.setText(String.valueOf(val));
+                    }
+                    opt = 'l';
+                    addWrite = false;
+                }
+        });
+        btnLog.setVisible(false);
 
         window.setLayout(null);
         window.setResizable(false);
@@ -434,7 +484,7 @@ public class Calculator {
 
     };
     private Consumer<ItemEvent> themeSwitchEventConsumer = event -> {
-
+        
     };
 
     public static void main(String[] args) {
