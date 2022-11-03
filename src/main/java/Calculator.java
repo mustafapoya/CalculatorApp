@@ -186,6 +186,70 @@ public class Calculator {
             go = true;
         });
 
+        btnMul = initBtn("*", x[3], y[2], event -> {
+            repaintFont();
+            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText())) {
+                if(go) {
+                    val = calc(val, inText.getText(), opt);
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        inText.setText(String.valueOf((int) val));
+                    } else {
+                        inText.setText(String.valueOf(val));
+                    }
+                    opt = '*';
+                    go = false;
+                    addWrite = false;
+                } else {
+                    opt = '*';
+                }
+            }
+        });
+
+        btn4 = initBtn("4", x[0], y[3], event -> {
+            repaintFont();
+            if (addWrite) {
+                if (Pattern.matches("[0]*", inText.getText())) {
+                    inText.setText("4");
+                } else {
+                    inText.setText(inText.getText() + "4");
+                }
+            } else {
+                inText.setText("4");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn5 = initBtn("5", x[1], y[3], event -> {
+            repaintFont();
+            if (addWrite) {
+                if (Pattern.matches("[0]*", inText.getText())) {
+                    inText.setText("5");
+                } else {
+                    inText.setText(inText.getText() + "5");
+                }
+            } else {
+                inText.setText("5");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn6 = initBtn("6", x[2], y[3], event -> {
+            repaintFont();
+            if (addWrite) {
+                if (Pattern.matches("[0]*", inText.getText())) {
+                    inText.setText("6");
+                } else {
+                    inText.setText(inText.getText() + "6");
+                }
+            } else {
+                inText.setText("6");
+                addWrite = true;
+            }
+            go = true;
+        });
+
         
 
         window.setLayout(null);
