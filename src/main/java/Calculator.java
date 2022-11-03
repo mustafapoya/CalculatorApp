@@ -311,9 +311,68 @@ public class Calculator {
             go = true;
         });
 
-        
+        btnAdd = initBtn("+", x[3], y[4], event -> {
+            repaintFont();
+            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
+                if (go) {
+                    val = calc(val, inText.getText(), opt);
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        inText.setText(String.valueOf((int) val));
+                    } else {
+                        inText.setText(String.valueOf(val));
+                    }
+                    opt = '+';
+                    go = false;
+                    addWrite = false;
+                } else {
+                    opt = '+';
+                }
+        });
 
+        btnPoint = initBtn(".", x[0], y[5], event -> {
+            repaintFont();
+            if (addWrite) {
+                if (!inText.getText().contains(".")) {
+                    inText.setText(inText.getText() + ".");
+                }
+            } else {
+                inText.setText("0.");
+                addWrite = true;
+            }
+            go = true;
+        });
 
+        btn0 = initBtn("0", x[1], y[5], event -> {
+            repaintFont();
+            if (addWrite) {
+                if (Pattern.matches("[0]*", inText.getText())) {
+                    inText.setText("0");
+                } else {
+                    inText.setText(inText.getText() + "0");
+                }
+            } else {
+                inText.setText("0");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btnEqual = initBtn("=", x[2], y[5], event -> {
+            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText())) {
+                if (go) {
+                    val = calc(val, inText.getText(), opt);
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        inText.setText(String.valueOf((int) val));
+                    } else {
+                        inText.setText(String.valueOf(val));
+                    }
+
+                    opt = '=';
+                    addWrite = false;
+                }
+            }
+        });
+        btnEqual.setSize(2 * BUTTON_WIDTH + 10, BUTTON_HEIGHT);
 
         
 
