@@ -250,6 +250,71 @@ public class Calculator {
             go = true;
         });
 
+        btnSub = initBtn("-", x[3], y[3], event -> {
+            repaintFont();
+            if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText())) {
+                if(go) {
+                    val = calc(val, inText.getText(), opt);
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        inText.setText(String.valueOf((int) val));
+                    } else {
+                        inText.setText(String.valueOf(val));
+                    }
+                } else {
+                    opt = '-';
+                }
+            }
+        });
+
+        btn1 = initBtn("1", x[0], y[4], event -> {
+            repaintFont();
+            if (addWrite) {
+                if (Pattern.matches("[0]*", inText.getText())) {
+                    inText.setText("1");
+                } else {
+                    inText.setText(inText.getText() + "1");
+                }
+            } else {
+                inText.setText("1");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn2 = initBtn("2", x[1], y[4], event -> {
+            repaintFont();
+            if (addWrite) {
+                if (Pattern.matches("[0]*", inText.getText())) {
+                    inText.setText("2");
+                } else {
+                    inText.setText(inText.getText() + "2");
+                }
+            } else {
+                inText.setText("2");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn3 = initBtn("3", x[2], y[4], event -> {
+            repaintFont();
+            if (addWrite) {
+                if (Pattern.matches("[0]*", inText.getText())) {
+                    inText.setText("3");
+                } else {
+                    inText.setText(inText.getText() + "3");
+                }
+            } else {
+                inText.setText("3");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        
+
+
+
         
 
         window.setLayout(null);
