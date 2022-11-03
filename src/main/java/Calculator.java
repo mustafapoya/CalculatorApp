@@ -141,6 +141,51 @@ public class Calculator {
             }
         });
 
+        btn7 = initBtn("7", x[0], y[2], event -> {
+            repaintFont();
+            if(addWrite) {
+                if(Pattern.matches("[0]*", inText.getText())) {
+                    inText.setText("7");
+                } else {
+                    inText.setText(inText.getText() + "7");
+                }
+            } else {
+                inText.setText("7");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn8 = initBtn("8", x[1], y[2], event -> {
+            repaintFont();
+            if (addWrite) {
+                if (Pattern.matches("[0]*", inText.getText())) {
+                    inText.setText("8");
+                } else {
+                    inText.setText(inText.getText() + "8");
+                }
+            } else {
+                inText.setText("8");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn9 = initBtn("9", x[2], y[2], event -> {
+            repaintFont();
+            if (addWrite) {
+                if (Pattern.matches("[0]*", inText.getText())) {
+                    inText.setText("9");
+                } else {
+                    inText.setText(inText.getText() + "9");
+                }
+            } else {
+                inText.setText("9");
+                addWrite = true;
+            }
+            go = true;
+        });
+
         
 
         window.setLayout(null);
