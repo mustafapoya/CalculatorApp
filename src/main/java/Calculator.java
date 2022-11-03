@@ -2,6 +2,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.util.function.Consumer;
 
@@ -72,6 +73,7 @@ public class Calculator {
         int[] x = {MARGIN_X, MARGIN_X + 90, 200, 290, 380};
         int[] y = {MARGIN_Y, MARGIN_Y + 100, MARGIN_Y + 180, MARGIN_Y + 260, MARGIN_Y + 340, MARGIN_Y + 420};
 
+        // define Input Display
         inText = new JTextField("0");
         inText.setBounds(x[0], y[0], 350, 70);
         inText.setEditable(false);
@@ -96,6 +98,21 @@ public class Calculator {
         return combo;
     }
 
+    private JButton initBtn(String label, int x, int y, ActionListener event) {
+        JButton btn = new JButton(label);
+        btn.setBounds(x, y, BUTTON_WIDTH, BUTTON_HEIGHT);
+        btn.setFont(new Font("Comic Sans MS", Font.PLAIN, 28));
+        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn.addActionListener(event);
+        btn.setFocusable(false);
+        window.add(btn);
+
+        return btn;
+    }
+
+    private void repaintFont() {
+        inText.setFont(inText.getFont().deriveFont(Font.PLAIN));
+    }
     private Consumer<ItemEvent> calcTypeSwitchEventConsumer = event -> {
 
     };
@@ -111,7 +128,7 @@ public class Calculator {
         } catch( Exception ex ) {
             System.err.println( "Failed to initialize LaF" );
         }
-        
+
         new Calculator();
     }
 }
