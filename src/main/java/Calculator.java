@@ -1,3 +1,5 @@
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
@@ -502,14 +504,47 @@ public class Calculator {
         }
     };
     private Consumer<ItemEvent> themeSwitchEventConsumer = event -> {
-        
+        if (event.getStateChange() != ItemEvent.SELECTED) return;
+
+        String selectedTheme = (String) event.getItem();
+
+        switch (selectedTheme) {
+            case "Simple":
+                FlatLightLaf.setup();
+                try {
+                    UIManager.setLookAndFeel( new FlatLightLaf() );
+                    SwingUtilities.updateComponentTreeUI(window);
+                } catch( Exception ex ) {
+                    System.err.println( "Failed to initialize LaF" );
+                }
+                break;
+            case"Colored":
+                FlatDarculaLaf.setup();
+                try {
+                    UIManager.setLookAndFeel( new FlatDarculaLaf() );
+                    SwingUtilities.updateComponentTreeUI(window);
+                } catch( Exception ex ) {
+                    System.err.println( "Failed to initialize LaF" );
+                }
+                break;
+            case"DarkTheme":
+                FlatDarkLaf.setup();
+                try {
+                    UIManager.setLookAndFeel( new FlatDarkLaf() );
+                    SwingUtilities.updateComponentTreeUI(window);
+                } catch( Exception ex ) {
+                    System.err.println( "Failed to initialize LaF" );
+                }
+                break;
+        }
     };
 
     public static void main(String[] args) {
         FlatLightLaf.setup();
+        FlatDarkLaf.setup();
 
         try {
-            UIManager.setLookAndFeel( new FlatLightLaf() );
+            UIManager.setLookAndFeel( new FlatDarkLaf() );
         } catch( Exception ex ) {
             System.err.println( "Failed to initialize LaF" );
         }
