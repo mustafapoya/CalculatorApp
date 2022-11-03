@@ -1,4 +1,7 @@
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.util.function.Consumer;
 
 public class Calculator {
     public static final int WINDOW_WIDTH = 410;
@@ -56,6 +59,49 @@ public class Calculator {
     */
 
     public Calculator() {
-        
+        window = new JFrame("Calculator");
+        window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        window.setLocationRelativeTo(null); // Move window to center
+
+        comboTheme = initCombo(new String[]{"Simple", "Colored", "DarkTheme"}, 230, 30, "Theme", themeSwitchEventConsumer);
+
+        comboCalcType = initCombo(new String[]{"Standard", "Scientific"}, 20, 30, "Calculator type", calcTypeSwitchEventConsumer);
+
+        int[] x = {MARGIN_X, MARGIN_X + 90, 200, 290, 380};
+        int[] y = {MARGIN_Y, MARGIN_Y + 100, MARGIN_Y + 180, MARGIN_Y + 260, MARGIN_Y + 340, MARGIN_Y + 420};
+
+        inText = new JTextField("0");
+        inText.setBounds(x[0], y[0], 350, 70);
+        inText.setEditable(false);
+        inText.setBackground(Color.WHITE);
+        inText.setFont(new Font("Comic Sans MS", Font.PLAIN, 33));
+        window.add(inText);
+
+        window.setLayout(null);
+        window.setResizable(false);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Close button clicked? = End The process
+        window.setVisible(true);
+    }
+
+    private JComboBox<String> initCombo(String[] items, int x, int y, String toolTip, Consumer consumerEvent) {
+        JComboBox<String> combo = new JComboBox<>(items);
+        combo.setBounds(x, y, 140, 25);
+        combo.setToolTipText(toolTip);
+        combo.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        combo.addItemListener(consumerEvent::accept);
+        window.add(combo);
+
+        return combo;
+    }
+
+    private Consumer<ItemEvent> calcTypeSwitchEventConsumer = event -> {
+
+    };
+    private Consumer<ItemEvent> themeSwitchEventConsumer = event -> {
+
+    };
+
+    public static void main(String[] args) {
+        new Calculator();
     }
 }
