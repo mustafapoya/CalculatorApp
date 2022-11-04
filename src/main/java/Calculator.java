@@ -1,5 +1,6 @@
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import javax.swing.*;
@@ -507,44 +508,36 @@ public class Calculator {
         if (event.getStateChange() != ItemEvent.SELECTED) return;
 
         String selectedTheme = (String) event.getItem();
+        FlatLaf theme = new FlatLightLaf();
 
         switch (selectedTheme) {
             case "Simple":
                 FlatLightLaf.setup();
-                try {
-                    UIManager.setLookAndFeel( new FlatLightLaf() );
-                    SwingUtilities.updateComponentTreeUI(window);
-                } catch( Exception ex ) {
-                    System.err.println( "Failed to initialize LaF" );
-                }
+                theme = new FlatLightLaf();
                 break;
             case"Colored":
                 FlatDarculaLaf.setup();
-                try {
-                    UIManager.setLookAndFeel( new FlatDarculaLaf() );
-                    SwingUtilities.updateComponentTreeUI(window);
-                } catch( Exception ex ) {
-                    System.err.println( "Failed to initialize LaF" );
-                }
+                theme = new FlatDarculaLaf();
                 break;
             case"DarkTheme":
                 FlatDarkLaf.setup();
-                try {
-                    UIManager.setLookAndFeel( new FlatDarkLaf() );
-                    SwingUtilities.updateComponentTreeUI(window);
-                } catch( Exception ex ) {
-                    System.err.println( "Failed to initialize LaF" );
-                }
+                theme = new FlatDarkLaf();
                 break;
+        }
+
+        try {
+            UIManager.setLookAndFeel( theme);
+            SwingUtilities.updateComponentTreeUI(window);
+        } catch( Exception ex ) {
+            System.err.println( "Failed to initialize LaF" );
         }
     };
 
     public static void main(String[] args) {
         FlatLightLaf.setup();
-        FlatDarkLaf.setup();
 
         try {
-            UIManager.setLookAndFeel( new FlatDarkLaf() );
+            UIManager.setLookAndFeel( new FlatLightLaf() );
         } catch( Exception ex ) {
             System.err.println( "Failed to initialize LaF" );
         }
