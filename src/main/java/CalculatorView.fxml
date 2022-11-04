@@ -9,4 +9,7 @@
    <padding>
       <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
    </padding>
+   <children>
+      <TextField layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="300.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+   </children>
 </AnchorPane>
