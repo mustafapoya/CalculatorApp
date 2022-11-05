@@ -1,4 +1,3 @@
-import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
@@ -25,7 +24,7 @@ public class Calculator {
             btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9,
             btnPoint, btnEqual, btnRoot, btnPower, btnLog;
 
-    private char opt = ' '; // Save the operator
+    private char operator = ' '; // Save the operator
     private boolean go = true; // For calculate with Opt != (=)
     private boolean addWrite = true; // Connect numbers in display
     private double val = 0; // Save the value typed for calculation
@@ -70,7 +69,7 @@ public class Calculator {
         window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         window.setLocationRelativeTo(null); // Move window to center
 
-        comboTheme = initCombo(new String[]{"Simple", "Colored", "DarkTheme"}, 230, 30, "Theme", themeSwitchEventConsumer);
+        comboTheme = initCombo(new String[]{"LightTheme", "DarkTheme"}, 230, 30, "Theme", themeSwitchEventConsumer);
 
         comboCalcType = initCombo(new String[]{"Standard", "Scientific"}, 20, 30, "Calculator type", calcTypeSwitchEventConsumer);
 
@@ -89,7 +88,7 @@ public class Calculator {
         btnC = initBtn("C", x[0], y[1], event -> {
             repaintFont();
             inText.setText("0");
-            opt = ' ';
+            operator = ' ';
             val = 0;
         });
 
@@ -111,14 +110,14 @@ public class Calculator {
             repaintFont();
             if(Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText())) {
                 if (go) {
-                    val = calc(val, inText.getText(), opt);
+                    val = calc(val, inText.getText(), operator);
                     if (Pattern.matches("", String.valueOf(val))) {
                         inText.setText(String.valueOf((int) val));
                     } else {
                         inText.setText(String.valueOf(val));
                     }
 
-                    opt = '%';
+                    operator = '%';
                     go = false;
                     addWrite = false;
                 }
@@ -129,17 +128,17 @@ public class Calculator {
             repaintFont();
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText())) {
                 if(go) {
-                    val = calc(val, inText.getText(), opt);
+                    val = calc(val, inText.getText(), operator);
                     if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
                         inText.setText(String.valueOf((int) val));
                     } else {
                         inText.setText(String.valueOf(val));
                     }
-                    opt = '/';
+                    operator = '/';
                     go = false;
                     addWrite = false;
                 } else {
-                    opt = '/';
+                    operator = '/';
                 }
             }
         });
@@ -193,17 +192,17 @@ public class Calculator {
             repaintFont();
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText())) {
                 if(go) {
-                    val = calc(val, inText.getText(), opt);
+                    val = calc(val, inText.getText(), operator);
                     if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
                         inText.setText(String.valueOf((int) val));
                     } else {
                         inText.setText(String.valueOf(val));
                     }
-                    opt = '*';
+                    operator = '*';
                     go = false;
                     addWrite = false;
                 } else {
-                    opt = '*';
+                    operator = '*';
                 }
             }
         });
@@ -257,14 +256,14 @@ public class Calculator {
             repaintFont();
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText())) {
                 if(go) {
-                    val = calc(val, inText.getText(), opt);
+                    val = calc(val, inText.getText(), operator);
                     if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
                         inText.setText(String.valueOf((int) val));
                     } else {
                         inText.setText(String.valueOf(val));
                     }
                 } else {
-                    opt = '-';
+                    operator = '-';
                 }
             }
         });
@@ -318,17 +317,17 @@ public class Calculator {
             repaintFont();
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
-                    val = calc(val, inText.getText(), opt);
+                    val = calc(val, inText.getText(), operator);
                     if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
                         inText.setText(String.valueOf((int) val));
                     } else {
                         inText.setText(String.valueOf(val));
                     }
-                    opt = '+';
+                    operator = '+';
                     go = false;
                     addWrite = false;
                 } else {
-                    opt = '+';
+                    operator = '+';
                 }
         });
 
@@ -363,14 +362,14 @@ public class Calculator {
         btnEqual = initBtn("=", x[2], y[5], event -> {
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText())) {
                 if (go) {
-                    val = calc(val, inText.getText(), opt);
+                    val = calc(val, inText.getText(), operator);
                     if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
                         inText.setText(String.valueOf((int) val));
                     } else {
                         inText.setText(String.valueOf(val));
                     }
 
-                    opt = '=';
+                    operator = '=';
                     addWrite = false;
                 }
             }
@@ -386,7 +385,7 @@ public class Calculator {
                     } else {
                         inText.setText(String.valueOf(val));
                     }
-                    opt = '√';
+                    operator = '√';
                     addWrite = false;
                 }
             }
@@ -398,17 +397,17 @@ public class Calculator {
             repaintFont();
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
-                    val = calc(val, inText.getText(), opt);
+                    val = calc(val, inText.getText(), operator);
                     if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
                         inText.setText(String.valueOf((int) val));
                     } else {
                         inText.setText(String.valueOf(val));
                     }
-                    opt = '^';
+                    operator = '^';
                     go = false;
                     addWrite = false;
                 } else {
-                    opt = '^';
+                    operator = '^';
                 }
         });
         btnPower.setFont(new Font("Comic Sans MS", Font.PLAIN, 24));
@@ -423,7 +422,7 @@ public class Calculator {
                     } else {
                         inText.setText(String.valueOf(val));
                     }
-                    opt = 'l';
+                    operator = 'l';
                     addWrite = false;
                 }
         });
@@ -511,13 +510,9 @@ public class Calculator {
         FlatLaf theme = new FlatLightLaf();
 
         switch (selectedTheme) {
-            case "Simple":
+            case "LightTheme":
                 FlatLightLaf.setup();
                 theme = new FlatLightLaf();
-                break;
-            case"Colored":
-                FlatDarculaLaf.setup();
-                theme = new FlatDarculaLaf();
                 break;
             case"DarkTheme":
                 FlatDarkLaf.setup();
@@ -534,9 +529,9 @@ public class Calculator {
     };
 
     public static void main(String[] args) {
-        FlatLightLaf.setup();
 
         try {
+            FlatLightLaf.setup();
             UIManager.setLookAndFeel( new FlatLightLaf() );
         } catch( Exception ex ) {
             System.err.println( "Failed to initialize LaF" );
