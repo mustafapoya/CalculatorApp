@@ -14,7 +14,7 @@ You can hit ⭐️this repository and share it with others
 
 ### Installation 🔌
 1. Click on **Fork** button (at the top right of page) to make a copy of this project for your own account.
-2. Download the repository (project) from the download section or clone this project by typing in the bash: `git clone https://github.com/mustafapoya/CalculatorApp.git`
+2. Download the repository (project) from the download section or clone this project by typing in the bash:<br/>`git clone https://github.com/mustafapoya/CalculatorApp.git`
 3. Import the cloned repository (project) in Intellij IDEA or any other IDE.
 4. Run the Application
 
