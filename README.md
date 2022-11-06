@@ -7,7 +7,7 @@ You can hit ⭐️this repository and share it with others
 ### Screenshots:
 
 <img src="screenshot/dark_theme.png" alt="Calculator - screenshot" width="200"/>
-<img src="screenshot/light_theme.PNG" alt="Calculator - screenshot" width="200"/>
+<img src="screenshot/light_theme.png" alt="Calculator - screenshot" width="200"/>
 
 ### Requirements 🔧
 * Java version 8 or higher.
