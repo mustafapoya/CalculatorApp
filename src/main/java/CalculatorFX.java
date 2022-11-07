@@ -28,7 +28,7 @@ public class CalculatorFX extends Application {
 
         try {
             BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("CalculatorView.fxml"));
-
+            
             Scene scene = new Scene(root);
             jMetro.setScene(scene);
 

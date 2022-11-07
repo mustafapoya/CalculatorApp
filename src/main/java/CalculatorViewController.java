@@ -22,11 +22,9 @@ public class CalculatorViewController implements Initializable {
     @FXML
     private Label lblText;
 
-    @FXML private Button btnRemainder, btnDivX, btnC, btnBack, btnSquare, btnPower,
-    btnLog, btnDivision, btnMultiply, btnMinus, btnPlus, btnEqual, btnPoint, btnSign,
-    btnOne, btnTwo, btnThree, btnFour, btnFive, btnSix, btnSeven, btnEight, btnNine;
-
-
+    @FXML private Button btnRemainder, btnOneDivX, btnC, btnBack, btnSquare, btnPower,
+    btnLog, btnDivision, btnMultiply, btnSubtract, btnAdd, btnEqual, btnPoint, btnSign,
+    btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
