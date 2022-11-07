@@ -18,6 +18,10 @@ You can hit ⭐️this repository and share it with others
 3. Import the cloned repository (project) in Intellij IDEA or any other IDE.
 4. Run the Application
 
+### Setup JavaFX
+1. To add JavaFX to the project you need to define this parameter in VM Options: <Br/>
+   `--module-path "C:\Program Files\Java\javafx\javafx-sdk-19\lib" --add-modules=javafx.controls,javafx.fxml`
+
 ### Contributing 💡
 If you want to contribute to this project and make it better with new ideas, your pull request is very welcomed.
 If you find any issue just put it in the repository issue section, thank you.
