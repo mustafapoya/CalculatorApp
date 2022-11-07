@@ -33,5 +33,10 @@
             <version>19</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jfxtras</groupId>
+            <artifactId>jmetro</artifactId>
+            <version>11.6.16</version>
+        </dependency>
     </dependencies>
 </project>
