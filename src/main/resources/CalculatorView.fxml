@@ -14,17 +14,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CalculatorViewController">
    <top>
-      <VBox alignment="BOTTOM_LEFT" prefHeight="100.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="header" alignment="BOTTOM_LEFT" prefHeight="100.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="20.0">
                <children>
-                  <ToggleButton mnemonicParsing="false" prefHeight="15.0" prefWidth="70.0" text="Light">
+                  <ToggleButton fx:id="toggleTheme" mnemonicParsing="false" prefHeight="15.0" prefWidth="70.0" text="Light">
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@/theme.png" />
+                              <Image url="@theme.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -32,7 +32,7 @@
                </children></HBox>
             <HBox prefHeight="75.0">
                <children>
-                  <Label prefHeight="75.0" prefWidth="320.0" text="0" HBox.hgrow="ALWAYS">
+                  <Label fx:id="lblText" prefHeight="75.0" prefWidth="320.0" text="0" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="50.0" />
                      </font>
