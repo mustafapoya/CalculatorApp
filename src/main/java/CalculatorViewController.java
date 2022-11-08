@@ -7,10 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class CalculatorViewController implements Initializable {
     @FXML
@@ -23,7 +24,7 @@ public class CalculatorViewController implements Initializable {
     @FXML
     private Label lblText;
 
-    @FXML private Button btnRemainder, btnOneDivX, btnC, btnBack, btnSquare, btnPower,
+    @FXML private Button btnMod, btnOneDivX, btnC, btnBack, btnSquare, btnPower,
     btnLog, btnDivision, btnMultiply, btnSubtract, btnAdd, btnEqual, btnPoint, btnSign,
     btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
 
@@ -32,6 +33,7 @@ public class CalculatorViewController implements Initializable {
     private boolean addWrite = true; // Connect numbers in display
     private double val = 0; // Save the value typed for calculation
 
+    public static final String NUMBER_REGEX = "([-]?\\d+[.]\\d*)|(\\d+)";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -60,8 +62,64 @@ public class CalculatorViewController implements Initializable {
             }
         });
 
-        btnRemainder.setOnAction();
+        btnMod.setOnAction(event -> {
+            if(Pattern.matches(NUMBER_REGEX, lblText.getText())) {
+                if(go) {
+                    val = calc(val, lblText.getText(), operator);
+                    if (Pattern.matches("", String.valueOf(val))) {
+                        lblText.setText(String.valueOf((int) val));
+                    } else {
+                        lblText.setText(String.valueOf(val));
+                    }
 
+                    operator = '%';
+                    go = false;
+                    addWrite = false;
+                }
+            }
+        });
+
+        btnDivision.setOnAction(event -> {
+            if(Pattern.matches(NUMBER_REGEX, lblText.getText())) {
+                if(go) {
+                    val = calc(val, lblText.getText(), operator);
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        lblText.setText(String.valueOf((int) val));
+                    } else {
+                        lblText.setText(String.valueOf(val));
+                    }
+
+                    operator = '/';
+                    go = false;
+                    addWrite = false;
+                } else {
+                    operator = '/';
+                }
+            }
+        });
+
+        
+    }
+
+    public double calc(double x, String input, char opt) {
+        double y = Double.parseDouble(input);
+
+        switch (opt) {
+            case '+':
+                return x + y;
+            case '-':
+                return x - y;
+            case '*':
+                return x * y;
+            case '/':
+                return x / y;
+            case '%':
+                return x % y;
+            case '^':
+                return Math.pow(x, y);
+            default:
+                return y;
+        }
     }
 
 }

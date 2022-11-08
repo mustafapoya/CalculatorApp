@@ -65,7 +65,7 @@
             <RowConstraints maxHeight="53.0" minHeight="53.0" prefHeight="53.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnRemainder" alignment="CENTER" mnemonicParsing="false" prefHeight="51.0" prefWidth="77.0" text="\%" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <Button fx:id="btnMod" alignment="CENTER" mnemonicParsing="false" prefHeight="51.0" prefWidth="77.0" text="\%" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <font>
                   <Font size="20.0" />
                </font></Button>
