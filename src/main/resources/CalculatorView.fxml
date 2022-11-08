@@ -81,7 +81,7 @@
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="btnSquare" alignment="CENTER" mnemonicParsing="false" prefHeight="51.0" prefWidth="77.0" text="√" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <Button fx:id="btnRoot" alignment="CENTER" mnemonicParsing="false" prefHeight="51.0" prefWidth="77.0" text="√" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                <font>
                   <Font size="20.0" />
                </font></Button>

@@ -24,9 +24,9 @@ public class CalculatorViewController implements Initializable {
     @FXML
     private Label lblText;
 
-    @FXML private Button btnMod, btnOneDivX, btnC, btnBack, btnSquare, btnPower,
+    @FXML private Button btnMod, btnOneDivX, btnC, btnBack, btnRoot, btnPower,
     btnLog, btnDivision, btnMultiply, btnSubtract, btnAdd, btnEqual, btnPoint, btnSign,
-    btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
+    btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
 
     private char operator = ' '; // Save the operator
     private boolean go = true; // For calculate with Opt != (=)
