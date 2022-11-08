@@ -98,6 +98,66 @@ public class CalculatorViewController implements Initializable {
             }
         });
 
+        btn7.setOnAction(event -> {
+            if(addWrite) {
+                if(Pattern.matches("[0]*", lblText.getText())) {
+                    lblText.setText("7");
+                } else {
+                    lblText.setText(lblText.getText() + "7");
+                }
+            } else {
+                lblText.setText("7");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn8.setOnAction(event -> {
+            if(addWrite) {
+                if(Pattern.matches("[0]*", lblText.getText())) {
+                    lblText.setText("8");
+                } else {
+                    lblText.setText(lblText.getText() + "8");
+                }
+            } else {
+                lblText.setText("8");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn9.setOnAction(event -> {
+            if(addWrite) {
+                if(Pattern.matches("[0]*", lblText.getText())) {
+                    lblText.setText("9");
+                } else {
+                    lblText.setText(lblText.getText() + "9");
+                }
+            } else {
+                lblText.setText("9");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btnMultiply.setOnAction(event -> {
+            if (Pattern.matches(NUMBER_REGEX, lblText.getText())) {
+                if(go) {
+                    val = calc(val, lblText.getText(), operator);
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        lblText.setText(String.valueOf((int) val));
+                    } else {
+                        lblText.setText(String.valueOf(val));
+                    }
+                    operator = '*';
+                    go = false;
+                    addWrite = false;
+                } else {
+                    operator = '*';
+                }
+            }
+        });
+
         
     }
 
