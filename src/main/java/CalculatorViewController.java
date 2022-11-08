@@ -214,6 +214,156 @@ public class CalculatorViewController implements Initializable {
                 }
             }
         });
+
+        btn1.setOnAction(event -> {
+            if(addWrite) {
+                if(Pattern.matches("[0]*", lblText.getText())) {
+                    lblText.setText("1");
+                } else {
+                    lblText.setText(lblText.getText() + "1");
+                }
+            } else {
+                lblText.setText("1");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn2.setOnAction(event -> {
+            if(addWrite) {
+                if(Pattern.matches("[0]*", lblText.getText())) {
+                    lblText.setText("2");
+                } else {
+                    lblText.setText(lblText.getText() + "2");
+                }
+            } else {
+                lblText.setText("2");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn3.setOnAction(event -> {
+            if(addWrite) {
+                if(Pattern.matches("[0]*", lblText.getText())) {
+                    lblText.setText("3");
+                } else {
+                    lblText.setText(lblText.getText() + "3");
+                }
+            } else {
+                lblText.setText("3");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btnAdd.setOnAction(event -> {
+            if (Pattern.matches(NUMBER_REGEX, lblText.getText())) {
+                if (go) {
+                    val = calc(val, lblText.getText(), operator);
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        lblText.setText(String.valueOf((int) val));
+                    } else {
+                        lblText.setText(String.valueOf(val));
+                    }
+                    operator = '+';
+                    go = false;
+                    addWrite = false;
+                } else {
+                    operator = '+';
+                }
+            }
+        });
+
+        btnPoint.setOnAction(event -> {
+            if (addWrite) {
+                if (!lblText.getText().contains(".")) {
+                    lblText.setText(lblText.getText() + ".");
+                }
+            } else {
+                lblText.setText("0.");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn0.setOnAction(event -> {
+            if (addWrite) {
+                if (Pattern.matches("[0]*", lblText.getText())) {
+                    lblText.setText("0");
+                } else {
+                    lblText.setText(lblText.getText() + "0");
+                }
+            } else {
+                lblText.setText("0");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btnEqual.setOnAction(event -> {
+            if (Pattern.matches(NUMBER_REGEX, lblText.getText())) {
+                if (go) {
+                    val = calc(val, lblText.getText(), operator);
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        lblText.setText(String.valueOf((int) val));
+                    } else {
+                        lblText.setText(String.valueOf(val));
+                    }
+
+                    operator = '=';
+                    addWrite = false;
+                }
+            }
+        });
+
+        btnRoot.setOnAction(event -> {
+            if (Pattern.matches(NUMBER_REGEX, lblText.getText())) {
+                if (go) {
+                    val = Math.sqrt(Double.parseDouble(lblText.getText()));
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        lblText.setText(String.valueOf((int) val));
+                    } else {
+                        lblText.setText(String.valueOf(val));
+                    }
+                    operator = '√';
+                    addWrite = false;
+                }
+            }
+        });
+
+        btnPower.setOnAction(event -> {
+            if (Pattern.matches(NUMBER_REGEX, lblText.getText())) {
+                if (go) {
+                    val = calc(val, lblText.getText(), operator);
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        lblText.setText(String.valueOf((int) val));
+                    } else {
+                        lblText.setText(String.valueOf(val));
+                    }
+                    operator = '^';
+                    go = false;
+                    addWrite = false;
+                } else {
+                    operator = '^';
+                }
+            }
+        });
+
+        btnLog.setOnAction(event -> {
+            if (Pattern.matches(NUMBER_REGEX, lblText.getText())) {
+                if (go) {
+                    val = Math.log(Double.parseDouble(lblText.getText()));
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        lblText.setText(String.valueOf((int) val));
+                    } else {
+                        lblText.setText(String.valueOf(val));
+                    }
+                    operator = 'l';
+                    addWrite = false;
+                }
+            }
+        });
         
     }
 
