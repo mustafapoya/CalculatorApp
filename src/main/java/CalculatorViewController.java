@@ -158,6 +158,62 @@ public class CalculatorViewController implements Initializable {
             }
         });
 
+        btn4.setOnAction(event -> {
+            if(addWrite) {
+                if(Pattern.matches("[0]*", lblText.getText())) {
+                    lblText.setText("4");
+                } else {
+                    lblText.setText(lblText.getText() + "4");
+                }
+            } else {
+                lblText.setText("4");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn5.setOnAction(event -> {
+            if(addWrite) {
+                if(Pattern.matches("[0]*", lblText.getText())) {
+                    lblText.setText("5");
+                } else {
+                    lblText.setText(lblText.getText() + "5");
+                }
+            } else {
+                lblText.setText("5");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btn6.setOnAction(event -> {
+            if(addWrite) {
+                if(Pattern.matches("[0]*", lblText.getText())) {
+                    lblText.setText("6");
+                } else {
+                    lblText.setText(lblText.getText() + "6");
+                }
+            } else {
+                lblText.setText("6");
+                addWrite = true;
+            }
+            go = true;
+        });
+
+        btnSubtract.setOnAction(event -> {
+            if (Pattern.matches(NUMBER_REGEX, lblText.getText())) {
+                if(go) {
+                    val = calc(val, lblText.getText(), operator);
+                    if (Pattern.matches("[-]?[\\d]+[.][0]*", String.valueOf(val))) {
+                        lblText.setText(String.valueOf((int) val));
+                    } else {
+                        lblText.setText(String.valueOf(val));
+                    }
+                } else {
+                    operator = '-';
+                }
+            }
+        });
         
     }
 
