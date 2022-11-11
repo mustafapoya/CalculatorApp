@@ -19,7 +19,7 @@ public class CalculatorViewController implements Initializable {
     @FXML
     private VBox header;
     @FXML
-    private ToggleButton toggleTheme;
+    public ToggleButton toggleTheme;
 
     @FXML
     private Label lblText;
@@ -387,5 +387,15 @@ public class CalculatorViewController implements Initializable {
                 return y;
         }
     }
+
+    public void setRootTheme(boolean isLight) {
+        if (isLight) {
+            root.setStyle("-fx-background-color:#f4f4f4");
+        } else {
+            root.setStyle("-fx-background-color:#282525");
+        }
+
+    }
+
 
 }
