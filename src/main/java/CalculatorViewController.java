@@ -287,6 +287,16 @@ public class CalculatorViewController implements Initializable {
             go = true;
         });
 
+        btnSign.setOnAction(event -> {
+            if(addWrite) {
+                if(!lblText.getText().startsWith("-")) {
+                    lblText.setText("-" + lblText.getText());
+                } else {
+                    lblText.setText(lblText.getText().substring(1));
+                }
+            }
+        });
+
         btn0.setOnAction(event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", lblText.getText())) {

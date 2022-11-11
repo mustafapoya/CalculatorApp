@@ -38,9 +38,11 @@ public class CalculatorFX extends Application {
                 if(controller.toggleTheme.isSelected()) {
                     jMetro.setStyle(Style.LIGHT);
                     controller.setRootTheme(true);
+                    controller.toggleTheme.setText("Dark");
                 } else {
                     jMetro.setStyle(Style.DARK);
                     controller.setRootTheme(false);
+                    controller.toggleTheme.setText("Light");
                 }
             });
 
